@@ -1,0 +1,32 @@
+{
+  "name": "offline-money-manager",
+  "version": "1.0.0",
+  "description": "offline money manager for the thrifty traveller",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js",
+    "lite-server": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoCarreraDesigns/offline-money-manager.git"
+  },
+  "keywords": [
+    "offline",
+    "money",
+    "manager",
+    "node.js",
+    "express",
+    "compression",
+    "lite-server",
+    "mongoose",
+    "c.r.e.a.m."
+  ],
+  "author": "Nicholas C. Maas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NekoCarreraDesigns/offline-money-manager/issues"
+  },
+  "homepage": "https://github.com/NekoCarreraDesigns/offline-money-manager#readme"
+}
