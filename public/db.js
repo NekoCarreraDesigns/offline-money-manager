@@ -4,7 +4,7 @@ const dbRequest = indexedDB.open("offline-money-manager", 1);
 
 dbRequest.onupgradeneeded = (event) => {
     const db = event.target.result;
-    db.createObjectSore("pending", { autoIncrement: true });
+    db.createObjectStore("pending", { autoIncrement: true });
 };
 
 dbRequest.onsuccess = (event) => {
