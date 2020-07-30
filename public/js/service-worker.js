@@ -1,19 +1,11 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js").then((reg) => {
-      console.log("We found your service worker file!", reg);
-    });
-  });
-}
-
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
   "/manifest.json",
-  "/public/icons/icon-192x192.png",
-  "/public/icons/icon-512x512.png",
+  "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png",
   "/styles.css",
-  "/public/js/db.js",
+  "/js/db.js",
 ];
 
 const CACHE_NAME = "static-cache-v1";
@@ -42,7 +34,7 @@ self.addEventListener("activate", function (event) {
       );
     })
   );
-  self.ClientRectList.claim();
+  self.clients.claim();
 });
 
 self.addEventListener("fetch", function (event) {
