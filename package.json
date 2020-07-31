@@ -4,6 +4,7 @@
   "description": "offline money manager for the thrifty traveller",
   "main": "server.js",
   "scripts": {
+    "watch": "nodemon",
     "test": "node server.js",
     "start": "node server.js",
     "lite-server": "lite-server"
