@@ -7,6 +7,8 @@ const PORT = 3000;
 
 const app = express();
 
+app.use(compression());
+
 app.use(logger("dev"));
 
 app.use(compression());
@@ -16,14 +18,14 @@ app.use(express.json());
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/budget", {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
 });
 
 // routes
 app.use(require("./controllers/api.js"));
 
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
+  console.log(`App running on port ${PORT}!`);
 });
