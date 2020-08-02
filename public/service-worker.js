@@ -1,30 +1,32 @@
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
-  "/manifest.json",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png",
-  "/styles.css",
   "/index.js",
+  "/icons/icon-512x512.png",
+  "/icons/icon-192x192.png",
   "/db.js",
+  "/manifest.json",
+  "/styles.css",
   "/service-worker.js",
 ];
 
-const CACHE_NAME = "static-cache-v1";
+const CACHE_NAME = "static-cache-v2";
 const DATA_CACHE_NAME = "data-cache-v1";
 
-self.addEventListener("install", function (event) {
-  event.waitUntil(
+// registers service worker
+self.addEventListener("install", function (evt) {
+  evt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log("Your files were pre-cached successfully");
+      console.log("Your files were pre-cached successfully!");
       return cache.addAll(FILES_TO_CACHE);
     })
   );
+
   self.skipWaiting();
 });
 
-self.addEventListener("activate", function (event) {
-  event.waitUntil(
+self.addEventListener("activate", function (evt) {
+  evt.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
         keyList.map((key) => {
@@ -36,36 +38,34 @@ self.addEventListener("activate", function (event) {
       );
     })
   );
+
   self.clients.claim();
 });
 
-self.addEventListener("fetch", function (event) {
-  if (event.request.url.includes("/api")) {
-    event.respondWith(
-      caches
-        .open(DATA_CACHE_NAME)
-        .then((cache) => {
-          return fetch(event.request)
-            .then((response) => {
-              if (response.status === 200) {
-                cache.put(event.request.url, response.clone());
-              }
-              return response;
-            })
-            .catch((err) => {
-              return cache.match(event.request);
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+// cache responses for requests for data - opens the data cache
+self.addEventListener("fetch", function (evt) {
+  if (evt.request.url.includes("/api")) {
+    console.log("[Service Worker] Fetch (data)", evt.request.url);
+    evt.respondWith(
+      caches.open(DATA_CACHE_NAME).then((cache) => {
+        return fetch(evt.request)
+          .then((response) => {
+            if (response.status === 200) {
+              cache.put(evt.request.url, response.clone());
+            }
+            return response;
+          })
+          .catch((err) => {
+            return cache.match(evt.request);
+          });
+      })
     );
     return;
   }
-  event.respondWith(
+  evt.respondWith(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.match(event.request).then((response) => {
-        return response || fetch(event.request);
+      return cache.match(evt.request).then((response) => {
+        return response || fetch(evt.request);
       });
     })
   );
