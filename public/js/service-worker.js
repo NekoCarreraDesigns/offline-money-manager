@@ -7,6 +7,7 @@ const FILES_TO_CACHE = [
   "/styles.css",
   "/js/index.js",
   "/js/db.js",
+  "/js/service-worker.js",
 ];
 
 const CACHE_NAME = "static-cache-v1";
@@ -39,7 +40,7 @@ self.addEventListener("activate", function (event) {
 });
 
 self.addEventListener("fetch", function (event) {
-  if (event.request.url.includes("/api/")) {
+  if (event.request.url.includes("/api")) {
     event.respondWith(
       caches
         .open(DATA_CACHE_NAME)
