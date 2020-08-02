@@ -5,9 +5,9 @@ const FILES_TO_CACHE = [
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
   "/styles.css",
-  "/js/index.js",
-  "/js/db.js",
-  "/js/service-worker.js",
+  "/index.js",
+  "/db.js",
+  "/service-worker.js",
 ];
 
 const CACHE_NAME = "static-cache-v1";
