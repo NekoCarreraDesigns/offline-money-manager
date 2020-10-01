@@ -2,7 +2,7 @@
 
 ![last commit](https://img.shields.io/github/last-commit/NekoCarreraDesigns/offline-money-manager?style=flat-square)![license badge](https://img.shields.io/github/license/NekoCarreraDesigns/offline-money-manager?style=flat-square)
 
-### URL: coming soon
+### URL: https://hidden-brook-75406.herokuapp.com/
 
 ## Description
 
