@@ -2,7 +2,11 @@
 
 ![last commit](https://img.shields.io/github/last-commit/NekoCarreraDesigns/offline-money-manager?style=flat-square)![license badge](https://img.shields.io/github/license/NekoCarreraDesigns/offline-money-manager?style=flat-square)
 
+<<<<<<< HEAD
 ### URL: https://hidden-brook-75406.herokuapp.com/
+=======
+### URL: https://boiling-forest-80263.herokuapp.com/
+>>>>>>> a1eee537db6ae0f88fd9d1965220fd038021c708
 
 ## Description
 
