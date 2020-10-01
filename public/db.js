@@ -18,7 +18,7 @@ dbRequest.onsuccess = ({ target }) => {
 };
 
 dbRequest.onerror = function (event) {
-  console.log("Dang it!" + event.target.errorCode);
+  console.log("Error" + event.target.errorCode);
 };
 
 function saveRecord(record) {
