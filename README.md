@@ -4,6 +4,8 @@
 
 ### URL: https://hidden-brook-75406.herokuapp.com/
 
+![budget-tracker](public/assets/BudgetTracker.gif)
+
 ## Description
 
 App that can be used to balance your budget, on or offline.
